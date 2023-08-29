@@ -1,14 +1,16 @@
-const cachedCalculation = (operation) => {
-  const obj = {
-    add: (n1, n2) => n1 + n2,
-    multiply: (n1, n2) => n1 * n2,
-    subtract: (n1, n2) => n1 / n2,
-    separation: (n1, n2) => n1 / n2,
+const createCalculator = (operation) => {
+  return (x, y) => {
+    if (operation === "add") {
+      return x + y;
+    } else if (operation === "subtract") {
+      return x - y;
+    } else if (operation === "multiply") {
+      return x * y;
+    } else if (operation === "divide") {
+      return x / y;
+    }
   };
-  return obj[operation];
 };
 
-const multiply = cachedCalculation("multiply");
-console.log(multiply(5, 6));
-const add = cachedCalculation("add");
-console.log(add(4, 5));
+const add = createCalculator("add");
+console.log(add(5, 3));
