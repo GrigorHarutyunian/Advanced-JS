@@ -10,7 +10,7 @@ function myBind(obj, ...other) {
   };
 }
 
-function aboutBook(obj, owner) {
+function aboutBook(obj) {
   const myThis = obj;
   return `Books name ${myThis.name},auther ${myThis.auther},${myThis.page} pages`;
 }
