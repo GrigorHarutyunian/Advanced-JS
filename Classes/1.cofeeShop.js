@@ -33,43 +33,36 @@ class CoffeeShop {
       : `All orders have been fulfilled!`;
   }
   dueAmount() {
-    let amount = 0;
-    for (let x = 0; x < this.orders.length; x++) {
-      for (let y = 0; y < this.manu.length; y++) {
-        if (this.orders[x] === this.manu[y].name) {
-          amount += this.manu[y].price;
-          break;
-        }
-      }
-    }
-    return amount;
+    return this.orders.reduce((acc, val) => {
+      const order = this.manu.find((order) => order.name === val);
+
+      return order ? acc + order.price : 0;
+    }, 0);
   }
   cheapestItem() {
     let theCheapest = Infinity;
-    for (let key in this.manu) {
-      if (this.manu[key].price < theCheapest) {
-        theCheapest = this.manu[key].name;
+    let res = "";
+    this.manu.forEach((val) => {
+      if (theCheapest > val.price) {
+        theCheapest = val.price;
+        res = val.name;
       }
-    }
-    return theCheapest;
+    });
+    return res;
   }
   drinksOnly() {
-    let onlyDrinks = [];
-    for (let key in this.manu) {
-      if (this.manu[key].type === "drink") {
-        onlyDrinks = [...onlyDrinks, this.manu[key].name];
-      }
-    }
-    return onlyDrinks;
+    return this.manu
+      .filter((val) => {
+        return val.type === "drink";
+      })
+      .map((drink) => drink.name);
   }
   foodOnly() {
-    let onlyFoods = [];
-    for (let key in this.manu) {
-      if (this.manu[key].type === "food") {
-        onlyFoods = [...onlyFoods, this.manu[key].name];
-      }
-    }
-    return onlyFoods;
+    return this.manu
+      .filter((val) => {
+        return val.type === "food";
+      })
+      .map((food) => food.name);
   }
 }
 
@@ -85,3 +78,5 @@ console.log(starbucks.fulfillOrder());
 console.log(starbucks.orders);
 console.log(starbucks.foodOnly());
 console.log(starbucks.cheapestItem());
+console.log(starbucks.drinksOnly());
+console.log(starbucks.foodOnly());

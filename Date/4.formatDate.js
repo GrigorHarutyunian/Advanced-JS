@@ -1,5 +1,5 @@
 const formatDate = (date) => {
-  const weeks = [
+  const months = [
     "January",
     "February",
     "March",
@@ -13,10 +13,6 @@ const formatDate = (date) => {
     "November",
     "December",
   ];
-  const res = `${date.getDate()} ${
-    weeks[date.getMonth()]
-  } ${date.getFullYear()}`;
-  return res;
+  return `${date.getDate()} ${months[date.getMonth()]} ${date.getFullYear()}`;
 };
-
 console.log("Actual output: ", formatDate(new Date("2020-05-14")));

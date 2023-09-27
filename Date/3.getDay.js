@@ -8,8 +8,6 @@ const getDay = (date) => {
     "Friday",
     "Saturday",
   ];
-  const index = new Date(date).getDay();
-  return weeks[index];
+  return weeks[new Date(date).getDay()];
 };
-const res = getDay("09/04/2016");
-console.log(res);
+console.log(getDay("12/08/2011"));
