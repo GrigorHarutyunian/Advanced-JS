@@ -1,16 +1,17 @@
-const dogObj = {
-  name: "Graf",
-  age: 3,
+const obj1 = {
+  name: "joe",
+  age: 27,
+  saysMth(city, street) {
+    return this.name + " " + this.age + " " + city + " " + street;
+  },
 };
 
-function myApply(obj, other) {
-  let res = this(obj, ...other);
-  return res;
+function myApply(obj, args) {
+  obj.prop = this;
+  return obj.prop(...args);
 }
 
-function aboutDog(obj, owner) {
-  const myThis = obj;
-  return `Dogs name is ${myThis.name},he is ${myThis.age},his owner is ${owner}`;
-}
-aboutDog.__proto__.myApply = myApply;
-console.log(aboutDog.myApply(dogObj, ["Jack"]));
+Function.prototype.myApply = myApply;
+console.log(
+  obj1.saysMth.myApply({ name: "Goqor", age: 26 }, ["Yeravan", "Muratsan 17"])
+);

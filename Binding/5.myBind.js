@@ -1,19 +1,16 @@
-const book = {
-  page: 310,
-  auther: "Gabriel García Márquez",
-  name: "One Hundred Years of Solitude",
+const obj1 = {
+  name: "joe",
+  age: 27,
+  saysMth() {
+    return this.name + " " + this.age;
+  },
 };
 
-function myBind(obj, ...other) {
-  return () => {
-    return this(obj, ...other);
-  };
+function myBind(obj) {
+  obj.prop = this;
+  return () => obj.prop();
 }
 
-function aboutBook(obj) {
-  const myThis = obj;
-  return `Books name ${myThis.name},auther ${myThis.auther},${myThis.page} pages`;
-}
-aboutBook.__proto__.myBind = myBind;
-const newBinding = aboutBook.myBind(book);
-console.log(newBinding());
+Function.prototype.myBind = myBind;
+const bind = obj1.saysMth.myBind({ name: "Goqor", age: 26 });
+console.log(bind());

@@ -1,16 +1,22 @@
 const obj = {
-  name: "Jon",
-  lastName: "Smith",
+  name: "Joe",
+  age: 21,
+  showPerson(city, street) {
+    return this.name + " " + this.age + " " + city + " " + street;
+  },
 };
-function myCall(obj, ...other) {
-  let res = this(obj, ...other);
-  return res;
+
+function showPerson(city, street) {
+  return this.name + " " + this.age + " " + city + " " + street;
 }
 
-function person(obj, city, age) {
-  let myThis = obj;
-  return `I am ${myThis.name}  ${myThis.lastName},I live in ${city}, i am ${age}`;
+function myCall(context, ...other) {
+  context.prop = this;
+  return context.prop(...other);
 }
 
-person.__proto__.myCall = myCall;
-console.log(person.myCall(obj, "Yeravan", 32));
+Function.prototype.myCall = myCall;
+
+const mushegh = { name: "mushegh", age: 22 };
+
+console.log(obj.showPerson.myCall(mushegh, "Yerevan", "Arami 43"));
