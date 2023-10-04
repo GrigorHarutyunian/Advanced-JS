@@ -2,9 +2,10 @@ class Node {
   constructor(value) {
     this.value = value;
     this.next = null;
+    this.prev = null;
   }
 }
-class LinkedList {
+class DoublyLinkedList {
   constructor() {
     this.head = null;
     this.tail = null;
@@ -18,12 +19,22 @@ class LinkedList {
       this.tail = newNode;
       this.length++;
     } else {
-      this.tail.next = newNode;
-      this.tail = newNode;
+      let current = this.head;
+      let prev;
+      while (current) {
+        prev = current;
+
+        current = current.next;
+      }
+      current = newNode;
+      current.prev = prev;
+      prev.next = current;
+      this.tail = prev.next;
       this.length++;
     }
     return this;
   }
+
   pop() {
     if (!this.head) {
     } else if (this.length === 1) {
@@ -32,11 +43,19 @@ class LinkedList {
       this.length = 0;
     } else {
       let current = this.head;
-      for (let x = 0; x < this.length - 2; x++) {
+      let prev;
+      let x = 0;
+      while (true) {
+        if (x === this.length - 2) {
+          prev = current;
+          break;
+        }
+
         current = current.next;
+        x++;
       }
-      this.tail = current;
-      this.tail.next = null;
+      prev.next = null;
+      this.tail = prev;
       this.length--;
     }
     return this;
@@ -49,6 +68,7 @@ class LinkedList {
       this.length--;
     } else {
       this.head = this.head.next;
+      this.head.prev = null;
       this.length--;
     }
     return this;
@@ -62,8 +82,10 @@ class LinkedList {
       this.length++;
     } else {
       let current = this.head;
+      this.head.prev = newNode;
       this.head = newNode;
       this.head.next = current;
+
       this.length++;
     }
     return this;
@@ -91,7 +113,7 @@ class LinkedList {
     } else {
       for (let x = 0; x <= index; x++) {
         if (x === index) {
-          return current;
+          return current.value;
         }
         current = current.next;
       }
@@ -124,6 +146,7 @@ class LinkedList {
       }
 
       prevNode.next = nextNode;
+      nextNode.prev = prevNode;
       this.length--;
     }
 
@@ -140,21 +163,23 @@ class LinkedList {
     } else {
       let current = this.head;
       const newNode = new Node(value);
-      let prevIndex = this.get(index - 1);
-      let nextIndex = this.get(index);
-      let prevNode;
-      let nextNode;
-      for (let x = 0; x <= nextIndex; x++) {
-        if (x === prevIndex) {
-          prevNode = current;
-        }
-        if (x === nextIndex) {
-          nextNode = current;
+      let prev;
+      let next;
+
+      while (index) {
+        if (index === 2) {
+          prev = current;
+        } else if (index === 1) {
+          next = current;
         }
         current = current.next;
+
+        index--;
       }
-      prevNode.next = newNode;
-      newNode.next = nextNode;
+      prev.next = newNode;
+      next.prev = newNode;
+      newNode.prev = prev;
+      newNode.next = next;
       this.length++;
     }
     return this;
@@ -163,22 +188,22 @@ class LinkedList {
   reverse() {
     let prev = null;
     let current = this.head;
-    let next = null;
     while (current) {
-      next = current.next;
-      current.next = prev;
+      const temp = current.prev;
+      current.prev = current.next;
+      current.next = temp;
       prev = current;
-      current = next;
+      current = current.prev;
     }
+    this.tail = this.head;
     this.head = prev;
     return this;
   }
 }
-const newLinkedList = new LinkedList();
-newLinkedList.push(1);
-newLinkedList.push(2);
-console.log(newLinkedList.push(3));
-console.log(newLinkedList.push(4));
-console.log(newLinkedList.push(5));
-console.log(newLinkedList.push(5));
-console.log(newLinkedList.reverse());
+const doubleNewLinkedList = new DoublyLinkedList();
+doubleNewLinkedList.push(1);
+doubleNewLinkedList.push(2);
+console.log(doubleNewLinkedList.push(3));
+console.log(doubleNewLinkedList.push(4));
+console.log(doubleNewLinkedList.push(5));
+console.log(doubleNewLinkedList.reverse());
