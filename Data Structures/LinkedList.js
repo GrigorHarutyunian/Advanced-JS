@@ -69,37 +69,36 @@ class LinkedList {
     return this;
   }
 
-  get(val) {
+  getIndex(val) {
     if (!this.head) {
       return -1;
     } else {
-      let curent = this.head;
+      let current = this.head;
       for (let x = 0; x < this.length; x++) {
-        if (curent.value === val) {
+        if (current.value === val) {
           return x;
-        }
-        curent = curent.next;
-      }
-      return -1;
-    }
-  }
-
-  getValue(index) {
-    let current = this.head;
-    if (index >= this.length || index < 0) {
-      return -1;
-    } else {
-      for (let x = 0; x <= index; x++) {
-        if (x === index) {
-          return current;
         }
         current = current.next;
       }
+      return -1;
     }
   }
 
+  getNode(index) {
+    let current = this.head;
+    let i = 0;
+    while (current) {
+      if (i === index) {
+        return current;
+      }
+      i++;
+      current = current.next;
+    }
+    return "invalide index";
+  }
+
   remove(val) {
-    let i = this.get(val);
+    let i = this.getIndex(val);
     if (!this.head) {
     } else if (i === -1) {
       console.log("Invalide val");
@@ -108,51 +107,28 @@ class LinkedList {
     } else if (i === 0) {
       this.shift();
     } else {
-      let current = this.head;
-      let prevIndex = i - 1;
-      let nextIndex = i + 1;
-      let prevNode;
-      let nextNode;
-      for (let x = 0; x <= nextIndex; x++) {
-        if (x === prevIndex) {
-          prevNode = current;
-        }
-        if (x === nextIndex) {
-          nextNode = current;
-        }
-        current = current.next;
-      }
-
-      prevNode.next = nextNode;
+      this.getNode(i - 1).next = this.getNode(i + 1);
       this.length--;
     }
 
     return this;
   }
 
+  removeAt(index) {
+    return this.remove(this.getNode(index).value);
+  }
+
   insert(value, index) {
-    if (index > this.length) {
+    if (index > this.length || index < 0) {
       console.log("invalide index");
     } else if (index === this.length) {
       this.push(value);
     } else if (index === 0) {
       this.unshift(value);
     } else {
-      let current = this.head;
       const newNode = new Node(value);
-      let prevIndex = this.get(index - 1);
-      let nextIndex = this.get(index);
-      let prevNode;
-      let nextNode;
-      for (let x = 0; x <= nextIndex; x++) {
-        if (x === prevIndex) {
-          prevNode = current;
-        }
-        if (x === nextIndex) {
-          nextNode = current;
-        }
-        current = current.next;
-      }
+      let prevNode = this.getNode(index - 1);
+      let nextNode = this.getNode(index);
       prevNode.next = newNode;
       newNode.next = nextNode;
       this.length++;
@@ -173,12 +149,35 @@ class LinkedList {
     this.head = prev;
     return this;
   }
+
+  getSize() {
+    return this.length;
+  }
+
+  isEmpty() {
+    return !this.length;
+  }
+  printList() {
+    let current = this.head;
+    while (current) {
+      console.log(current.value);
+      current = current.next;
+    }
+  }
 }
-const newLinkedList = new LinkedList();
-newLinkedList.push(1);
-newLinkedList.push(2);
-console.log(newLinkedList.push(3));
-console.log(newLinkedList.push(4));
-console.log(newLinkedList.push(5));
-console.log(newLinkedList.push(5));
-console.log(newLinkedList.reverse());
+const list = new LinkedList();
+list
+  .push(1)
+  .push(2)
+  .push(3)
+  .push(4)
+  .push(5)
+  .pop()
+  .unshift(0)
+  .shift()
+  .remove(2)
+  .removeAt(1)
+  .insert(2, 1)
+  .insert(3, 2)
+  .printList();
+console.log(list);
