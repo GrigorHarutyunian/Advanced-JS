@@ -53,21 +53,21 @@ class LinkedList {
 }
 
 class Stack {
-  memory = new LinkedList();
+  #memory = new LinkedList();
   push(val) {
-    return this.memory.push(val);
+    return this.#memory.push(val);
   }
   pop() {
-    return this.memory.pop();
+    return this.#memory.pop();
   }
   peek() {
-    return this.memory.peek();
+    return this.#memory.peek();
   }
   isEmpty() {
-    return this.memory.isEmpty();
+    return this.#memory.isEmpty();
   }
   getSize() {
-    return this.memory.getSize();
+    return this.#memory.getSize();
   }
 }
 const stack = new Stack();
