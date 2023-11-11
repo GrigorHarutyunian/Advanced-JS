@@ -8,74 +8,114 @@
 </head>
 <body>
   <div class="parent">
-    <nav>
+    <nav class="navBar">
+      <div class="imgTop" >
         <img height="60px" width="60px" src="https://st2.depositphotos.com/2124563/9989/i/450/depositphotos_99892152-stock-photo-flag-football-club-real-madrid.jpg"></img>
-        <ul>
-            <li>
+        </div>
+        <div>
                 <a href="facebook.com">Facebook</a>
-            </li>
-            <li>
-                <a href="twitter">Twitter</a>
-            </li>
-        </ul>
+                <a class="hrefInDivNav" href="twitter">Twitter</a>
+              </div>
+              <div>
         <button class="butt" >Contact</button>
+        </div>
     </nav>
 
    <main>
-    <header>
+    <header class="header">
         <img class="img" height="20%" width="30%" src="https://c8.alamy.com/comp/G7CDNN/soccer-uefa-champions-league-group-d-real-madrid-v-fc-basel-santiago-G7CDNN.jpg"></img>
     </header>
-    <section>
-        <select name="Rm" id="real">
+    <section class="formSection">
+        <select class="Rm" name="Rm" id="real">
             <option value="team">Team</option>
             <option value="goals">goals</option>
             <option value="forwords">forwords</option>
             <option value="trainer">trainer</option>
           </select>
-          <div>
-            <ul>
+          <div class="headerDivParent">
+           <div class="divik"> 
+           <img width="100%" height="60px" src="https://e2.365dm.com/13/05/800x600/168311249_2941386.jpg?20130813223857"></img>
+           <div class="divP">
+            <p>Real Madrid's all-time leading goalscorer  Cristiano Ronaldo is a part of Real Madrid's legacy and will forever be remember as one of the great icons throughout the club's history. He was unveiled at the Santiago Bernabéu on 6 July 2009, where he was joined by Eusebio and Alfredo Di Stéfano, and since that day, the goals just kept coming. He netted 451 times in 438 competitive appearances with Real Madrid (averaging over a goal a game). He registered in all of the competitions he featured in: 312 in LaLiga, 105 in the Champions League, 22 in the Copa del Rey, six in the Club World Cup, four in the Spanish Super Cup and two in the UEFA Super Cup.</p>
+            </div>
+            </div>
+          <div class="divik">
+            <img width="100%" height="60px" src="data:image/jpeg;base64,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"></img>
+            <div class="divP">
+            <p>Real Madrid Club de Fútbol is a professional football club based in Madrid, Spain. The club first participated in a European competition in 1955. The first international cup they took part in was the Latin Cup in which they participated as champions of Spain. The competition lasted from 1949 to 1957 and Real Madrid won both tournaments which they entered, the same number as Barcelona and Milan. Since becoming the first Spanish club to enter the European Cup in 1955, Real has competed in every UEFA-organized competition, except the Intertoto Cup and Conference League. They have missed out on European football only twice in their history, in the 1977–78 and 1996–97 seasons.
 
-           <li> <img width="20px" height="20px" src="https://images5.alphacoders.com/770/770521.jpg"></img>
-            <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit<p>
-            </li>
-          <li>
-            <img width="20px" height="20px" src="https://images5.alphacoders.com/770/770521.jpg"></img>
-            <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit<p>
-            </li>
-          <li>
+              Real Madrid has had the most success in the European Cup, winning the trophy for a record fourteen times. Real was the winner of the inaugural edition of the tournament and remains the only club to win the trophy five times in a row (the first five editions). It also holds the distinction of being the only club to defend the title in the Champions League era, as well as to win it three times in a row.[1] The club has also won the UEFA Cup twice, in 1985 and 1986, the Super Cup five times, in 2002, 2014, 2016, 2017, and 2022, the Intercontinental Cup three times, in 1960, 1998, and 2002, and the FIFA Club World Cup five times, in 2014, 2016, 2017, 2018 and 2022. Real Madrid, with 29 continental and worldwide trophies, is the most successful team in international club football.</p>
+            </div>
+          </div>
           
-            <img  width="20px" height="20px" src="https://images5.alphacoders.com/770/770521.jpg"></img>
-            <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit<p>
-            </li>
-          <li>
-            <img width="20px" height="20px" src="https://images5.alphacoders.com/770/770521.jpg"></img>
-            <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit<p>
-            </li>
-            </ul>
+          <div class="divik">
+            <img  width="100%" height="60px" src="https://cdn.vox-cdn.com/thumbor/rizNULIk70QQWIv4RUuWoltXFTE=/0x0:4357x2887/1200x800/filters:focal(1733x838:2429x1534)/cdn.vox-cdn.com/uploads/chorus_image/image/71860522/1257580000.0.jpg"></img>
+            <div class="divP">
+            <p>El Clásico (in Spanish, also in lowercase letters;[1] Spanish pronunciation: [el ˈklasiko]) or El Clàssic (in Catalan,[2] pronounced [əl ˈklasik]), both meaning "The Classic", is the name given to any football match between rival clubs Barcelona and Real Madrid. Originally referring to competitions held in the Spanish championship, the term now includes every match between the clubs, such as those in the UEFA Champions League, Supercopa de España and Copa del Rey. It is considered one of the biggest club football games in the world and is among the most viewed annual sporting events.[3][4][5][6] A fixture known for its intensity, it has featured memorable goal celebrations from both teams, often involving mockery from both sides.[7]</p>
+            </div>
+            </div>
+          <div class="divik">
+            <img width="100%" height="60px" src="https://cdn.theathletic.com/app/uploads/2023/07/04120738/GettyImages-466092953-scaled.jpg"></img>
+            <div class="divP">
+            <p>The Santiago Bernabéu Stadium (Spanish: Estadio Santiago Bernabéu,  is a football stadium in Madrid, Spain. With a current seating capacity of 83,168,[3] it has the second-largest seat capacity in Spain,[6] and it has been the home stadium of Real Madrid since its completion in 1947.[2]
+
+              Named after footballer and legendary Real Madrid president Santiago Bernabéu (1895–1978), the stadium is one of the world's most famous football venues. It has hosted the final of the European Cup/UEFA Champions League on four occasions: in 1957, 1969, 1980, 2010.[7] The stadium also hosted the second leg of the 2018 Copa Libertadores Finals, making Santiago Bernabéu the first (and only) stadium to host the two most important premier continental cup finals (UEFA Champions League and Copa Libertadores).
+              
+              The final matches for the 1964 European Nations' Cup and the 1982 FIFA World Cup were also held at the Bernabéu, making it the first stadium in Europe to host both a UEFA Euro final and a FIFA World Cup final.</p>
+            </div>
+            </div>
+            <div class="divik">
+              <img width="100%" height="60px" src="https://www.realmadrid.com/cs/Satellite?blobcol=urldata&blobheader=image%2Fjpeg&blobkey=id&blobtable=MungoBlobs&blobwhere=1203426296800&ssbinary=true"></img>
+              <div class="divP">
+              <p>Carlo Ancelotti Cavaliere OMRI, Ufficiale OSI (born 10 June 1959) is an Italian professional football manager and former player who is the manager of Real Madrid. Nicknamed "Don Carlo",[4] he is regarded as one of the greatest managers of all time.[5][6][7] Ancelotti is the most decorated manager in UEFA Champions League history, having won the trophy a record four times as coach (twice with AC Milan and twice with Real Madrid). He is also the first and only one to have managed teams in five Champions League finals.[8] As a player, he won the European Cup twice with AC Milan in 1989 and 1990, making him one of seven people to have won the European Cup or Champions League as both a player and a manager. Ancelotti is also the first and only manager ever to have won league titles in all of Europe's top five leagues.[9] He has won the FIFA Club World Cup a joint-record three times, and is also the manager with the joint-most UEFA Super Cup triumphs, having won the trophy on four occasions, managing Milan and Real Madrid</p>
+              </div>
+              </div>
+              <div class="divik">
+                <img width="100%" height="60px" src="https://cdn.theathletic.com/app/uploads/2023/02/16074417/GettyImages-1247064906-scaled.jpg"></img>
+                <div class="divP">
+                <p>José Ignacio Fernández Iglesias (Spanish pronunciation; born 18 January 1990), known as Nacho (Spanish pronunciation: , is a Spanish professional footballer who plays as a defender for La Liga club Real Madrid, which he captains, and the Spain national team.
+
+                  He has spent his entire career with Real Madrid after making his debut with the first team in 2011, making over 300 appearances and winning several trophies, including five Champions Leagues.
+                  
+                  Nacho won his first senior cap for Spain in 2013, and was on the squad at the 2018 FIFA World Cup.</p>
+                </div>
+               </div>
+               
+                 
           </div>
 
     </section>
-    <section>
+    <section class="sect">
         <form action="file:///C:/Users/GBM/Desktop/AcA/HomeWWorks/Advanced%20JS/HTML/task2.html" method="get">
-            
+         <div class="aa">   
            <label> <input placeholder="name" type="name"></input></label>
            <label> <input placeholder="email" type="email"></input></label>
            <label> <input placeholder="second Name" type="name"></input></label>
            <label> <input placeholder="pasword" type="password"></input></label>
-           <textarea></textarea>
-           <input type="submit"></input>
-            
+           <textarea class="textarea"></textarea>
+           <input class="submit" type="submit"></input>
+        </div>    
 
         </form>
     </section>
     </main>
-    <footer>
+    <footer class="foot">
      <img height="50px" width="50px" src="https://static.vecteezy.com/system/resources/thumbnails/010/994/249/small/real-madrid-logo-symbol-design-spain-football-european-countries-football-teams-illustration-free-vector.jpg"></img>
-     <ul class="ull">
-        <li>a</li>
-        <li>a</li>
-        <li>a</li>
-    <ul>     
+     <ul class="">
+        <li>La Liga</li>
+        <li>Champions legue</li>
+        <li>World Cup</li>
+     </ul>     
+      <ul class="">
+        <li>La Liga</li>
+        <li>Champions legue</li>
+        <li>World Cup</li>
+      </ul>  
+      <ul class="">
+        <li>La Liga</li>
+        <li>Champions legue</li>
+        <li>World Cup</li>
+      </ul>  
     </footer>
   </div> 
        
